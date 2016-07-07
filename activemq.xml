@@ -80,7 +80,7 @@
         -->
         <persistenceAdapter>
           <replicatedLevelDB
-            directory="activemq-data"
+            directory="activemq-datalb"
             replicas="3"
             bind="tcp://0.0.0.0:0"
             zkAddress="zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181"
