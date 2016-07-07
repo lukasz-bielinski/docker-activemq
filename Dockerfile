@@ -37,6 +37,9 @@ RUN chmod +x /bin/start-*.sh \
 
   && rm apache-activemq-$ACTIVEMQ_VERSION-bin.tar
 
+ADD activemq.xml /opt/app/apache-activemq/conf/activemq.xml
+
+
 # Add user app
 RUN echo "app:x:999:999::/opt/app:/bin/false" >> /etc/passwd; \
   echo "app:x:999:" >> /etc/group; \
