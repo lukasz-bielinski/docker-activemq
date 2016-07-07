@@ -11,6 +11,7 @@ PORT_STOMPSSL=${PORT_STOMPSSL:=61612}
 PORT_STOMP=${PORT_STOMP:=61613}
 PORT_MQTT=${PORT_MQTT:=1883}
 PORT_WS=${PORT_WS:=61614}
+HOSTNAME=${HOSTNAME:=somehostname}
 
 sed -i -e "s/<storeUsage limit=\"100 gb\"\/>/<storeUsage limit=\"${STORE_USAGE} gb\"\/>/" /opt/app/apache-activemq/conf/activemq.xml
 sed -i -e "s/<tempUsage limit=\"50 gb\"\/>/<tempUsage limit=\"5 gb\"\/>/" /opt/app/apache-activemq/conf/activemq.xml
@@ -24,6 +25,9 @@ sed -i -e "s/<transportConnector name=\"ws\" uri=\"ws:\/\/0.0.0.0:61614?maximumC
 sed -i -e "s/admin activemq/admin ${ADMIN_PASSWORD}/" /opt/app/apache-activemq/conf/jmx.password
 sed -i -e "s/admin: admin, admin/admin: ${ADMIN_PASSWORD}, admin/" /opt/app/apache-activemq/conf/jetty-realm.properties
 sed -i -e 's/user: user, user//' /opt/app/apache-activemq/conf/jetty-realm.properties
+
+sed -i -e "s/hostname\=\"broker1.example.org\"/hostname\=\"${HOSTNAME}\"/" /opt/app/apache-activemq/conf/activemq.xml
+
 
 JVM_OPTS="-server -verbose:gc -XX:+UseCompressedOops -Xms512m -Xmx512m -XX:MetaspaceSize=64M -XX:MaxMetaspaceSize=64M"
 
