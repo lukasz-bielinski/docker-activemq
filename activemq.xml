@@ -84,7 +84,6 @@
             replicas="3"
             bind="tcp://0.0.0.0:0"
             zkAddress="zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181"
-            zkPassword="password"
             zkPath="/activemq/leveldb-stores"
             hostname="broker1.example.org"
             />
